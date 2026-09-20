@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/toaster-js/default.css"/>
+    <link rel="stylesheet" href="./src/css/all.css">
+    <link href="./src/css/output.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body class="bg-[#091628]" id="body">
+    <header class="font-web text-white">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl font-bold capitalize text-blue-500">Expense <span
+                        class="text-[#00bd7e]">tracker</span></span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center justify-center gap-3.5 text-blue-500">
+                <div class="text-2xl">
+                    <i class="fa-regular fa-calendar"></i>
+                </div>
+                <div class="flex flex-col items-center text-base justify-center">
+                    <span id="date"></span>
+                    <span>Saterday</span>
+                </div>
+            </nav>
+            <button id="mode"
+                class="mode inline-flex items-center bg-gray-100 border-0 py-2.5 px-3 ml-3.5 focus:outline-none hover:bg-gray-400 rounded text-base mt-4 md:mt-0">
+                <i class="fa-solid fa-moon text-[#091628]"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- cards section start -->
+    <section class="w-full mt-5">
+        <div class=" w-[90%] mx-auto grid md:grid-cols-3 lg:grid-cols-5 gap-2.5">
+            <div class="bg-slate-800/60 rounded-3xl flex flex-col px-2.5 py-2.5 text-white">
+                <span class="text-4xl py-2.5 text-[#00bc7d]"><i class="fa-solid fa-wallet"></i></span>
+                <h4 class="capitalize font-medium py-1.5 text-xl">total expense</h4>
+                <h2 id="totalExpense" class="text-2xl font-bold">$ 12000</h2>
+                <p class="capitalize text-sm">something was wrong</p>
+            </div>
+            <div class="bg-slate-800/60 rounded-3xl flex flex-col px-2.5 py-2.5 text-white">
+                <span class="text-4xl py-2.5 text-rose-400"><i class="fa-solid fa-utensils"></i></span>
+                <h4 class="capitalize font-medium py-1.5 text-xl">food</h4>
+                <h2 id="foodExpense" class="text-2xl font-bold">$ 12000</h2>
+                <p class="capitalize text-sm">something was wrong</p>
+            </div>
+            <div class="bg-slate-800/60 rounded-3xl flex flex-col px-2.5 py-2.5 text-white">
+                <span class="text-4xl py-2.5"><i class="fa-solid fa-bus text-blue-400"></i></span>
+                <h4 class="capitalize font-medium py-1.5 text-xl">transport</h4>
+                <h2 id="transportExpense" class="text-2xl font-bold">$ 12000</h2>
+                <p class="capitalize text-sm">something was wrong</p>
+            </div>
+            <div class="bg-slate-800/60 rounded-3xl flex flex-col px-2.5 py-2.5 text-white">
+                <span class="text-4xl py-2.5"><i class="fa-solid fa-bag-shopping  text-purple-400"></i></span>
+                <h4 class="capitalize font-medium py-1.5 text-xl">shopping</h4>
+                <h2 id="shoppingExpense" class="text-2xl font-bold">$ 12000</h2>
+                <p class="capitalize text-sm">something was wrong</p>
+            </div>
+            <div class="bg-slate-800/60 rounded-3xl flex flex-col px-2.5 py-2.5 text-white">
+                <span class="text-4xl py-2.5"><i class="fa-solid fa-dice-three text-amber-400"></i></span>
+                <h4 class="capitalize font-medium py-1.5 text-xl">others</h4>
+                <h2 id="otherExpense" class="text-2xl font-bold">$ 12000</h2>
+                <p class="capitalize text-sm">something was wrong</p>
+            </div>
+        </div>
+    </section>
+    <!-- cards section end -->
+
+    <!-- filter section start -->
+    <section class="w-full mt-5">
+        <div class="w-[90%] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div
+                    class="lg:col-span-5 bg-slate-800/40 border border-slate-800/80 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                    <div
+                        class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 font-bold text-xl shadow-lg shadow-emerald-500/20 shrink-0">
+                            <i class="fa-solid fa-plus text-slate-950"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-white tracking-wide">Add New Expense</h1>
+                            <p class="text-xs text-slate-400 mt-0.5">Fill in the details below to add your expense.</p>
+                        </div>
+                    </div>
+                    <form id="expenseForm" class="space-y-4">
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Title
+                                / Description</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3.5 text-slate-400 text-sm">
+                                    <i class="fa-solid fa-file-lines"></i>
+                                </span>
+                                <input type="text" id="expenseTitle" required
+                                    class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                                    placeholder="e.g. Lunch at restaurant">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Amount</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3.5 text-slate-400 text-sm font-semibold">৳</span>
+                                <input type="number" id="expenseAmount" required min="0" step="any"
+                                    class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-10 pr-4 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                                    placeholder="e.g. 250">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Category</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3.5 text-slate-400 text-sm">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </span>
+                                <select id="expenseCategory"
+                                    class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-10 pr-10 text-sm text-slate-200 appearance-none focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all cursor-pointer">
+                                    <option value="Food" selected>Food</option>
+                                    <option value="Transport">Transport</option>
+                                    <option value="Shopping">Shopping</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span class="absolute right-3.5 text-slate-400 text-xs pointer-events-none">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Date</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3.5 text-slate-400 text-sm">
+                                    <i class="fa-regular fa-calendar"></i>
+                                </span>
+                                <input type="text" id="expenseDate" required
+                                    class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-10 pr-10 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                                <span class="absolute right-3.5 text-slate-400 text-sm pointer-events-none">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit"
+                                class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2 transition-all active:scale-[0.99] cursor-pointer">
+                                <i class="fa-solid fa-circle-plus text-base"></i>
+                                <span class="text-sm tracking-wide">Add Expense</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-slate-800/40 border border-slate-800/80 rounded-2xl p-5 shadow-xl">
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                            <div class="flex items-center space-x-2 text-slate-200">
+                                <i class="fa-solid fa-filter text-emerald-400 text-sm"></i>
+                                <h2 class="font-semibold text-sm tracking-wide">Filter by Category</h2>
+                            </div>
+                            <button id="clearAll"
+                                class="bg-slate-900/80 hover:bg-red-500/10 hover:text-red-400 text-slate-400 border border-slate-700/60 hover:border-red-500/30 px-3 py-1.5 rounded-xl text-xs font-medium flex items-center space-x-1.5 transition-all cursor-pointer">
+                                <i class="fa-regular fa-trash-can"></i>
+                                <span>Clear All</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2 overflow-x-auto pb-1">
+                            <button onclick="filterCategory('All')" id="filterAll"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20 transition-all cursor-pointer shrink-0">
+                                <i class="fa-solid fa-chart-pie text-xs"></i>
+                                <span>All</span>
+                            </button>
+                            <button onclick="filterCategory('Food')" id="filterFood"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60 transition-all cursor-pointer shrink-0">
+                                <i class="fa-solid fa-utensils text-rose-400 text-xs"></i>
+                                <span>Food</span>
+                            </button>
+                            <button onclick="filterCategory('Transport')" id="filterTransport"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60 transition-all cursor-pointer shrink-0">
+                                <i class="fa-solid fa-bus text-blue-400 text-xs"></i>
+                                <span>Transport</span>
+                            </button>
+                            <button onclick="filterCategory('Shopping')" id="filterShopping"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60 transition-all cursor-pointer shrink-0">
+                                <i class="fa-solid fa-bag-shopping text-purple-400 text-xs"></i>
+                                <span>Shopping</span>
+                            </button>
+                            <button onclick="filterCategory('Other')" id="filterOther"
+                                class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700/60 transition-all cursor-pointer shrink-0">
+                                <i class="fa-solid fa-ellipsis text-amber-400 text-xs"></i>
+                                <span>Other</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="scrolly"
+                        class="bg-slate-800/40 border border-slate-800/80 rounded-2xl p-5 shadow-xl overflow-y-auto h-[22.5rem]">
+
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="font-bold text-base text-white tracking-wide">
+                                Recent Expenses
+                            </h2>
+
+                            <span
+                                class="text-xs text-slate-400 bg-slate-900/80 px-2.5 py-1 rounded-lg border border-slate-700/60">
+                                <span id="itemCountBadge">0</span> item
+                            </span>
+                        </div>
+
+                        <div id="expensesList" class="space-y-3">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- filter section end -->
+
+    <div class="w-full container mt-5 mb-8 mx-auto">
+        <div
+            class="relative bg-[#0f172a] border border-slate-800/80 rounded-2xl p-5 md:px-8 md:py-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300 hover:border-slate-700/80">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5 rounded-2xl pointer-events-none">
+            </div>
+            <div class="flex items-center gap-4 relative z-10 w-full md:w-auto">
+                <div
+                    class="flex-shrink-0 w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20 shadow-inner">
+                    <i class="fa-solid fa-lightbulb text-xl animate-pulse"></i>
+                </div>
+                <div>
+                    <p class="text-slate-200 text-sm md:text-base font-medium leading-relaxed tracking-wide">
+                        “Small steps in managing your money today, lead to big dreams tomorrow.”
+                    </p>
+                </div>
+            </div>
+            <div
+                class="flex items-center gap-2 relative z-10 w-full md:w-auto justify-center border-t md:border-t-0 border-slate-800/80 pt-4 md:pt-0">
+                <p class="text-slate-400 text-xs md:text-sm font-medium tracking-wide">
+                    Developed by <span class="text-emerald-400 font-semibold">Arafat Rahman</span>
+                </p>
+            </div>
+            <div
+                class="flex items-center gap-4 relative z-10 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-slate-800/80 pt-4 md:pt-0">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
+                        <i class="fa-solid fa-chart-column text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="text-slate-100 text-sm font-semibold tracking-wide">Keep going!</h4>
+                        <p class="text-slate-400 text-xs font-normal">You're doing great</p>
+                    </div>
+                </div>
+                <div
+                    class="flex-shrink-0 w-9 h-9 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20 shadow-sm ml-2">
+                    <i class="fa-solid fa-heart text-sm"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://unpkg.com/toaster-js/umd.js"></script>
+    <script src="./src/js/script.js"></script>
+</body>
+
+</html>
