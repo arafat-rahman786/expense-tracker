@@ -101,7 +101,7 @@ function totalExpenseresult() {
   let total = tasklist.reduce((sum, task) => {
     return sum + Number(task.amount);
   }, 0);
-  totalExpense.innerText = total;
+  totalExpense.innerText = `$ ${total}`;
 }
 
 totalExpenseresult();
@@ -144,7 +144,7 @@ function foodExpenseResult() {
   let total = update.reduce((sum, task) => {
     return sum + Number(task.amount);
   }, 0);
-  foodExpense.innerText = total;
+  foodExpense.innerText = `$ ${total}`;
 }
 foodExpenseResult();
 
@@ -157,7 +157,7 @@ function transportExpenseResult() {
   let total = update.reduce((sum, task) => {
     return sum + Number(task.amount);
   }, 0);
-  transportExpense.innerText = total;
+  transportExpense.innerText = `$ ${total}`;
 }
 
 transportExpenseResult();
@@ -171,7 +171,7 @@ function ShoppingExpenseResult() {
   let total = update.reduce((sum, task) => {
     return sum + Number(task.amount);
   }, 0);
-  shoppingExpense.innerText = total;
+  shoppingExpense.innerText = `$ ${total}`;
 }
 
 ShoppingExpenseResult();
@@ -185,7 +185,7 @@ function OtherExpenseResult() {
   let total = update.reduce((sum, task) => {
     return sum + Number(task.amount);
   }, 0);
-  otherExpense.innerText = total;
+  otherExpense.innerText = `$ ${total}`;
 }
 
 OtherExpenseResult();
