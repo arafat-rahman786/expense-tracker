@@ -2,6 +2,7 @@
 let body = document.getElementById("body");
 let modeControl = document.getElementById("mode");
 let timeCase = document.getElementById("date");
+let daycontrol = document.getElementById("day");
 let totalExpense = document.getElementById("totalExpense");
 let foodExpense = document.getElementById("foodExpense");
 let transportExpense = document.getElementById("transportExpense");
@@ -22,8 +23,11 @@ function dateShow() {
   let date = now.getDate();
   let month = now.getMonth();
   let year = now.getFullYear();
+  let day = now.getDay();
+  let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let final = `${date}-${month + 1}-${year}`;
   timeCase.textContent = final;
+  daycontrol.textContent = daysOfWeek[day];
   expenseDate.value = final;
 }
 dateShow();
